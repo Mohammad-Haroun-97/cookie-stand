@@ -423,7 +423,7 @@ Place.prototype.getavgCookiesperHour = function () {
 // console.log(Math.floor(this.randomCustomers[i] * this.avg));
 
         this.avgCookiesperHour.push(Math.floor(this.randomCustomers[i] * this.avg))
-        console.log(this.randomCustomers[i] );
+        
 
         this.totalCookiesPerDay +=this.avgCookiesperHour[i];
 
