@@ -387,13 +387,16 @@ function randomArray(min, max) {
 
 let hours = ['6 am', '7 am', '8 am', '9 am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', ' 4pm', '5pm', '6pm', '7pm'];
 
+let places =[];  
 function Place(name, min, max, avg) {
     this.name = name;
     this.min = min;
     this.max = max;
     this.avg = avg;
+    this.totalCookiesPerDay=0
     this.randomCustomers = [];
     this.avgCookiesperHour = [];
+    places.push(this);
 
 
     // this.getrandomCustomers=function () {
@@ -408,188 +411,178 @@ function Place(name, min, max, avg) {
 
 Place.prototype.getrandomCustomers = function () {
     for (let i = 0; i < hours.length; i++) {
+        // console.log(rand(this.min, this.max));
         this.randomCustomers.push(randomArray(this.min, this.max))
     }
+    
 };
 
 Place.prototype.getavgCookiesperHour = function () {
     for (let i = 0; i < hours.length; i++) {
-
+        // console.log(this.randomCustomers[0] , this.avg);
+// console.log(Math.floor(this.randomCustomers[i] * this.avg));
 
         this.avgCookiesperHour.push(Math.floor(this.randomCustomers[i] * this.avg))
+        console.log(this.randomCustomers[i] );
+
+        this.totalCookiesPerDay +=this.avgCookiesperHour[i];
+
 
 
     }
+
+    // console.log( this.avgCookiesperHour);
 };
 
+
+
 let Seattle = new Place('Seattle', 26, 65, 6.3);
-
-
-Seattle.getrandomCustomers();
-Seattle.getavgCookiesperHour();
-
-console.log(Seattle);
-
-
 let Tokyo = new Place('Tokyo', 3, 24, 1.2);
-Tokyo.getrandomCustomers();
-Tokyo.getavgCookiesperHour();
-console.log(Tokyo);
-
 let Dubai = new Place('Dubai', 11, 38, 3.7);
-Dubai.getrandomCustomers();
-Dubai.getavgCookiesperHour();
-console.log(Dubai);
-
 let Paris = new Place('Paris', 20, 38, 2.3);
-Paris.getrandomCustomers();
-Paris.getavgCookiesperHour();
-console.log(Paris);
-
 let Lima = new Place('Lima', 2, 16, 4.6);
-Lima.getrandomCustomers();
-Lima.getavgCookiesperHour();
-console.log(Lima);
 
 
+// Seattle.getrandomCustomers();
+// Seattle.getavgCookiesperHour();
+// console.log(Seattle);
+// Tokyo.getrandomCustomers();
+// Tokyo.getavgCookiesperHour();
+// console.log(Tokyo);
+// Dubai.getrandomCustomers();
+// Dubai.getavgCookiesperHour();
+// console.log(Dubai);
+// Paris.getrandomCustomers();
+// Paris.getavgCookiesperHour();
+// console.log(Paris);
+// Lima.getrandomCustomers();
+// Lima.getavgCookiesperHour();
+// console.log(Lima);
 
 
-
-
-let table = document.createElement('table');
 
 let final = document.getElementById('final');
-
+let table = document.createElement('table');
 final.appendChild(table);
 
-let dataRow0 = document.createElement('tr');
-console.log(table);
-table.appendChild(dataRow0);
+// Header function
 
+function makeHeader(){
+    let headerRow = document.createElement('tr');
+table.appendChild(headerRow);
 
-let td0 = document.createElement('th');
-dataRow0.appendChild(td0);
-
-td0.textContent = 'Name' 
-// let headingRow = document.createElement('tr');
+let firstTh = document.createElement('th');
+headerRow.appendChild(firstTh);
+firstTh.textContent='Name';
 
 for (let i = 0; i < hours.length; i++) {
+    let hoursTh = document.createElement('th')
+    headerRow.appendChild(hoursTh);
+    hoursTh.textContent=hours[i];
+}
+
+let lastTh = document.createElement('th');
+headerRow.appendChild(lastTh);
+lastTh.textContent='Daily Location Total';
+
+
+}
+
+
+// Rendor Method
+
+Place.prototype.render=function(){
+
+    let dataRow = document.createElement('tr');
+    table.appendChild(dataRow);
+
+    let nameTd = document.createElement('th');
+dataRow.appendChild(nameTd);
+
+nameTd.textContent=this.name;
+
+for (let i=0 ; i < hours.length; i++) {
+
+    let cookiesTd=document.createElement('td');
+dataRow.appendChild(cookiesTd);
+
+cookiesTd.textContent=this.avgCookiesperHour[i];
 
     
-    let FirstRow = document.createElement('th');
+}
 
-    dataRow0.appendChild(FirstRow);
+let totalTd = document.createElement('td');
+dataRow.appendChild(totalTd);
 
-    FirstRow.textContent = hours[i];
+totalTd.textContent=this.totalCookiesPerDay;
 
 
 }
 
 
 
-let dataRow = document.createElement('tr');
+// Footer function
 
-table.appendChild(dataRow);
+function makefooter(){
 
+    let footerRow = document.createElement('tr');
+table.appendChild(footerRow);
 
-let td1 = document.createElement('td');
-dataRow.appendChild(td1);
+let firstTh = document.createElement('th');
+footerRow.appendChild(firstTh);
 
-td1.textContent = 'Seattle'
+firstTh.textContent='Totals';
+
+let totalOfTotals=0;
 
 for (let i = 0; i < hours.length; i++) {
 
-    let td2 = document.createElement('td');
-    dataRow.appendChild(td2);
+    let totalForEachhour=0;
+    for (let j = 0; j < places.length; j++) {
+        totalForEachhour+=places[j].avgCookiesperHour[i];
+        totalOfTotals+=places[j].avgCookiesperHour[i];
+        
+    }
 
-
-
-    td2.textContent = Seattle.avgCookiesperHour[i];
-
-
+    let footerTh=document.createElement('th');
+    footerRow.appendChild(footerTh);
+    footerTh.textContent=totalForEachhour
 }
 
-let dataRow1 = document.createElement('tr');
-table.appendChild(dataRow1);
+let lastTh = document.createElement('th');
+    footerRow.appendChild(lastTh);
 
-
-let td2 = document.createElement('td');
-dataRow1.appendChild(td2);
-
-td2.textContent = 'Tokyo'
-for (let i = 0; i < hours.length; i++) {
-
-    let td2 = document.createElement('td');
-    dataRow1.appendChild(td2);
-
-
-
-    td2.textContent = Tokyo.avgCookiesperHour[i];
-
-
-}
-
-let dataRow2 = document.createElement('tr');
-table.appendChild(dataRow2);
-
-
-let td3 = document.createElement('td');
-dataRow2.appendChild(td3);
-
-td3.textContent = 'Dubai'
-for (let i = 0; i < hours.length; i++) {
-
-    let td3 = document.createElement('td');
-    dataRow2.appendChild(td3);
-
-
-
-    td3.textContent = Dubai.avgCookiesperHour[i];
+    
+lastTh.textContent=totalOfTotals;
 
 
 }
 
 
 
-let dataRow3 = document.createElement('tr');
-table.appendChild(dataRow3);
-
-
-let td4 = document.createElement('td');
-dataRow3.appendChild(td4);
-
-td4.textContent = 'Paris'
-for (let i = 0; i < hours.length; i++) {
-
-    let td4 = document.createElement('td');
-    dataRow3.appendChild(td4);
 
 
 
-    td4.textContent = Paris.avgCookiesperHour[i];
+makeHeader();
 
-
+for (let i = 0; i < places.length; i++) {
+    places[i].getrandomCustomers();
+   places[i].getavgCookiesperHour();
+   
+   places[i].render();
+    
 }
 
-let dataRow4 = document.createElement('tr');
-table.appendChild(dataRow4);
-
-
-let td5 = document.createElement('td');
-dataRow4.appendChild(td5);
-
-td5.textContent = 'Lima'
-for (let i = 0; i < hours.length; i++) {
-
-    let td5 = document.createElement('td');
-    dataRow4.appendChild(td5);
+makefooter();
 
 
 
-    td5.textContent = Lima.avgCookiesperHour[i];
 
 
-}
+
+
+
+
 
 
 
