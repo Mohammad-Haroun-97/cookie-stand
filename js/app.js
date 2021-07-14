@@ -463,7 +463,9 @@ let Lima = new Place('Lima', 2, 16, 4.6);
 
 let final = document.getElementById('final');
 let table = document.createElement('table');
+table.setAttribute('id','table')
 final.appendChild(table);
+
 
 // Header function
 
@@ -520,6 +522,21 @@ totalTd.textContent=this.totalCookiesPerDay;
 }
 
 
+// \\\\\\\\\\\\\\\\\\\\\\\\
+
+let form=document.getElementById('form');
+form.addEventListener('submit',formSubmitter);
+
+
+
+function deleteRow() {
+    
+    document.getElementById('table').deleteRow(-1);
+    
+
+    
+}
+    
 
 // Footer function
 
@@ -556,6 +573,9 @@ let lastTh = document.createElement('th');
 lastTh.textContent=totalOfTotals;
 
 
+
+
+
 }
 
 
@@ -573,23 +593,37 @@ for (let i = 0; i < places.length; i++) {
     
 }
 
+
+
+
+
 makefooter();
 
 
+function formSubmitter(event) {
+    console.log(event);
+    event.preventDefault();
 
 
 
 
+    let name=event.target.PlaceName.value;
 
+    let min=event.target.Minimum.value;
 
+    let max=event.target.Maximum.value;
 
+    let avg=event.target.Average.value;
 
+    
+    let addedLocation=new Place(name, min, max, avg)
+    deleteRow();
+    addedLocation.getrandomCustomers();
+    addedLocation.getavgCookiesperHour();
+    addedLocation.render();
+    makefooter();
 
-
-
-
-
-
-
-
-
+    
+    
+    
+}
