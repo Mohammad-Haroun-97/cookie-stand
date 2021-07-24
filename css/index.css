@@ -80,6 +80,8 @@ a:hover {
      margin-top:75px;
      width: 50%;
      float: left;
+     height: 450px;
+     border-style: double  ;
 
     
 } 
@@ -95,14 +97,15 @@ main h1 {
     text-align: center;
     margin-top: 100px;
     font-family: 'Caveat', cursive;;
+    /* background-color: blue; */
     
 }
 
-/* main h2 {
+main h2 {
     font-family: 'Orbitron', sans-serif;;
     
     font-stretch: wider;
-} */
+} 
 
 .cc{
     
@@ -115,14 +118,89 @@ main h1 {
     background-color:#FFC93C;
     
     
+    
+    
 
 }
 
 .cc a {
     color: #CF0000;
     font-family: cursive;
+    
 
 }
 
 
+.para{
+    position: absolute;
+    top: 170px;
+    right: 10px;
+    
+   
+}
 
+.repe{
+    position: relative;
+    /* background-color: black; */
+    /* height: 500px; */
+    
+}
+
+.vv{
+    float: right;
+    position: absolute;
+    left: 20px;
+    right: 20px;
+    font-family: 'DM Sans', sans-serif;
+}
+
+#second{
+    position: fixed;
+    bottom: 0px;
+    right: 0px;
+    
+}
+
+.parent{
+    display: block;
+    /* background-color: #CF0000; */
+    height: 600px;
+}
+
+.strong{
+    color: #50CB93 ;
+}
+
+
+#Book{
+
+    background-color:  #50CB93;
+    width: 200px;
+    height: 50px;
+    color: cornsilk;
+    font-size: 25px;
+}
+
+footer{
+    
+    
+    height: 400px;
+    width: 100%;
+}
+
+#footerr{
+    height: 200px;
+    width: 100%;
+}
+
+footer nav ul li {
+    display: inline-block;
+    padding: 40px;
+    font-size: 22px;
+  
+}
+
+footer nav ul li a {
+    color: darkred;
+
+}

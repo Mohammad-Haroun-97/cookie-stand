@@ -1,4 +1,105 @@
 table,tr,th,td{
-    border: 1px solid black;
-    border-collapse: collapse;
+    border: 3px solid #54436B;
+    /* border-collapse: collapse; */
+    font-family: cursive;
+  }
+  tr{
+     border-collapse: collapse;
+
+  }
+  table{
+    /* border-collapse: collapse; */
+    height: 450px;
+    width: 75%;
+    text-align: center;
+    position: absolute;
+    left: 100px;
+  }
+
+  #PlaceName{
+    width: 220px;
+    height: 25px;
+    position: absolute;
+    left:220px;
+  }
+  #Minimum{
+    width: 220px;
+    height: 25px;
+    position: absolute;
+    left:700px;
+
+  }
+
+  #Maximum{
+    width: 220px;
+    height: 25px;
+    position: absolute;
+    left:220px;
+    
+
+  }
+  #Average{
+    width: 220px;
+    height: 25px;
+    position: absolute;
+    left:700px;
+  }
+
+  #enter{
+    margin-left: 400px;
+  }
+  
+
+  .first{
+    margin-left: 20px;
+  }
+  .second{
+    position: absolute;
+    left: 570px;
+    font-size: 23px;
+    font-family:'Tourney', cursive; 
+    color:#CF0000; 
+  }
+  fieldset{
+    padding: 35px;
+    /* width: 80%; */
+    margin-right: 20px;
+    margin-left: 20px;
+    background-color: #A19882;
+    font-size: 23px;
+    font-family:'Tourney', cursive; 
+    color:#CF0000; 
+  }
+  header{
+    height: 120px;
+   background-image: url(https://www.pngkit.com/png/detail/143-1439429_blue-wave-repetitive-patterns.png);
+    padding: 0px;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+  header h1 {
+    position: absolute;
+    top: 0px;
+    margin-left: 40%;
+    font-size: 70px;
+  }
+  #enter{
+    width: 150px;
+    height: 50px;
+    font-size: 25px;
+    
+  }
+  footer{
+    
+    height: 250px;
+    background-image: url(https://raw.githubusercontent.com/LTUC/amman-201d33/main/class-08/lab-b/assets/chinook.jpg);
+    background-size: 500px;
+    
+  }
+  .salesparent{
+    height: 800px;
+  }
+  body{
+    background-color:#FFF8D9 ;
+
   }
